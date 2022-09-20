@@ -1,1 +1,0 @@
-# aleskov-sklad-odpadu
