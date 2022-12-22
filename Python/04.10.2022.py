@@ -1,5 +1,5 @@
 def prva_uloha(veta):
-    #Zadanie: Zadas jednu samohlasku, ktore bude pouzite na miestach ostatych samohlaskach.
+    #Zadanie: Zadáš jednu samohlásku, ktorá bude pouzitá na miestach ostatých samohlások.
 
     only_samohlaska = input("Zadaj samohlásku, ktorú chceš nahradiť: ")
 
@@ -14,7 +14,7 @@ prva_uloha("Sedí mucha na stene, na stene, na stene. Sedí mucha na stene, sed�
 
 
 def druha_uloha(word):
-    #Zadanie: Zadas slovo/ vetu, ktore nasledne spocita ich unicode charactery.
+    #Zadanie: Zadas slovo/ vetu, ktoré následne spočíta ich unicode charactery.
     
     sucet = int()
     for letter in word.upper():
@@ -25,7 +25,7 @@ druha_uloha(input("Zadaj slovo: "))
 
 
 def tretia_uloha(prve_slovo, druhe_slovo):
-    #Zadanie: V oboch slovach sa spocita pismeno, ktore sa v tom slove nachadza a ktore si zadal.
+    #Zadanie: V oboch slovách sa spočíta písmeno, ktoré sa v tom slove nachádza a ktoré si zadal.
     
     pismeno = input("Zadaj písmeno, ktoré chceš nájsť v oboch slovách: ")
 
