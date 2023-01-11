@@ -50,3 +50,33 @@ def druha_uloha(zoznam):
     canvas.bind("<Button-1>", click)
 
 druha_uloha([0, 0])
+
+
+def tretia_uloha(zoznam):
+    canvas.create_line(zoznam, tags = "lajna")
+
+    def click(mouse):
+        zoznam.extend([mouse.x, mouse.y])
+        canvas.coords("lajna", zoznam)
+    canvas.bind("<Button-1>", click)
+
+tretia_uloha([10, 10, 60, 200])
+
+
+def stvrta_uloha():
+    color = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "A", "B", "C", "D", "E", "F"]
+    def happy_face(mouse):
+        canvas.create_oval(mouse.x - 10, mouse.y - 10, mouse.x + 10, mouse.y + 10)
+
+    canvas.bind("<B1-Motion>", happy_face)
+stvrta_uloha()
+
+def piata_uloha(zoznam):
+
+    def happy_face(mouse):
+        zoznam.extend([mouse.x, mouse.y])
+        canvas.create_line(zoznam)
+
+    canvas.bind("<B1-Motion>", happy_face)
+
+piata_uloha([])
