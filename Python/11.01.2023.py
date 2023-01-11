@@ -1,58 +1,64 @@
 import tkinter
+import random
 
 canvas=tkinter.Canvas(width = 500, height = 500, bg = "silver")
 canvas.pack()
 
+
 def prva_uloha():
-    #Zadanie: mas sa zabit a zomriet... :)
+    #Zadanie: kliknutin posunies obdlnik or something like that
 
-    canvas.create_rectangle(25, 25, 100, 75, fill="red", tags = "p")
+    canvas.create_rectangle(25, 25, 100, 75, fill="red", tags = "obdlznik")
 
-    def click(mouse):
-        canvas.move("p", 10, 10)
+    def north_west(nw):
+        canvas.move("obdlznik", 10, 10)
 
-    canvas.bind("<Button-1>", click)
+    def south_east(se):
+        canvas.move("obdlznik", -10, -10)
 
-    def click(mouse):
-        canvas.move("p", -10, -10)
-
-    canvas.bind("<Button-3>", click)
+    canvas.bind("<Button-1>", north_west)
+    canvas.bind("<Button-3>", south_east)
 
 prva_uloha()
 
 
 def druha_uloha(zoznam):
-    #Zadanie: sprav volaco
-    
-    canvas.create_rectangle(-20, -20, 20, 20, fill="red", width = 2, tags="stvorec")
-    canvas.create_rectangle(250,250, 250,250)
-    def click(mouse):
+    #Zadanie: 1. stvorec sa vykresli tam kde kliknes
+    #         2. rozdel GUI na 4 kvadranty, stred a v kazdom kvadrante sa ti vyfarbi stvorec inak
+
+    canvas.create_rectangle(-20, -20, 20, 20, fill = "red", width = 2, tags = "stvorec")
+
+    def move(mouse):
+        canvas.move("stvorec", mouse.x - zoznam[-2], mouse.y - zoznam[-1])
         zoznam.extend([mouse.x, mouse.y])
-        canvas.move("stvorec", mouse.x - zoznam[-4], mouse.y - zoznam[-3])
 
         if mouse.x < 250:
             if mouse.y < 250:
                 canvas.itemconfig("stvorec", fill = "yellow")
             elif mouse.y > 250:
                 canvas.itemconfig("stvorec", fill = "lime")
+
         elif mouse.x > 250:
             if mouse.y < 250:
                 canvas.itemconfig("stvorec", fill = "blue")
             elif mouse.y > 250:
                 canvas.itemconfig("stvorec", fill = "orange")
-        elif mouse.x and mouse.y == 250:
+
+        elif mouse.x == mouse.y == 250:
             canvas.itemconfig("stvorec", fill = "red")
 
         if len(zoznam) > 4:
             zoznam.pop(0)
             zoznam.pop(1)
 
-    canvas.bind("<Button-1>", click)
+    canvas.bind("<Button-1>", move)
 
 druha_uloha([0, 0])
 
 
 def tretia_uloha(zoznam):
+    #Zadanie: nemam tusaka
+
     canvas.create_line(zoznam, tags = "lajna")
 
     def click(mouse):
@@ -64,19 +70,23 @@ tretia_uloha([10, 10, 60, 200])
 
 
 def stvrta_uloha():
-    color = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, "A", "B", "C", "D", "E", "F"]
-    def happy_face(mouse):
-        canvas.create_oval(mouse.x - 10, mouse.y - 10, mouse.x + 10, mouse.y + 10)
+    #Zadanie: pri pohybe sa vykreslia kruhy
 
-    canvas.bind("<B1-Motion>", happy_face)
+    def ring(mouse):
+        color = random.randint(100000, 999999)
+        canvas.create_oval(mouse.x - 10, mouse.y - 10, mouse.x + 10, mouse.y + 10, fill = "#" + str(color))
+
+    canvas.bind("<B1-Motion>", ring)
 stvrta_uloha()
 
-def piata_uloha(zoznam):
 
-    def happy_face(mouse):
+def piata_uloha(zoznam):
+    #Zadanie: sprav volaco
+    
+    def left(mouse):
         zoznam.extend([mouse.x, mouse.y])
         canvas.create_line(zoznam)
 
-    canvas.bind("<B1-Motion>", happy_face)
+    canvas.bind("<B1-Motion>", left)
 
 piata_uloha([])
