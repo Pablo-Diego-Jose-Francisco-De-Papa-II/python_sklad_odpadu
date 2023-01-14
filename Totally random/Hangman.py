@@ -1,10 +1,9 @@
 def hangman():
     import random
-    
-    guessing_word = ["Body", "soil", "owl", "fit", "cup", "helmet", "marsh", "smash", "career", "warm", "discipline", "lean", "suffering", "quality", "population", "harmony", "eagle", "feather", "origin", "manage", "reproduction", "scatter", "certain", "healthy", "dismiss", "introduce", "flock", "pasture", "office", "attractive", "cheap", "linen", "relieve", "habitat", "cassette", "difference", "strain", "lift", "operational", "gasp", "environmental", "soup", "colorblind", "chain", "feminine", "shoot", "tank", "rock", "abbey", "mosquito"]
+    guessing_word = ["Body", "soil", "owl", "fit", "cup", "helmet", "marsh", "smash", "career", "warm", "discipline", "lean", "suffering", "quality", "population", "harmony", "eagle", "feather", "origin", "manage", "reproduction", "scatter", "certain", "healthy", "dismiss", "introduce", "flock", "pasture", "office", "attractive", "cheap", "linen", "relieve", "habitat", "cassette", "difference", "strain", "lift", "operational", "gasp", "environmental", "soup", "colorblind", "chain", "feminine", "shoot", "tank", "rock", "abbey", "mosquito", "zoophobia", "mario je gay", "reluctance" "abundant" "strange" "expenditure" "trench" "execution" "dollar" "monster" "community" "factor" "functional", "vegetable", "abolish", "falsify", "memorandum", "forestry", "evening", "residence", "glasses", "calculation", "favour", "production", "requirement", "continuation", "partnership", "implication", "preoccupation", "personality", "headquarters", "performance", "association"]
     num = random.randint(0, len(guessing_word))
     word = list(guessing_word[num].upper())
-    
+
     guess = []
     attempt = 0
     used_letters = []
@@ -16,6 +15,7 @@ def hangman():
             guess += "".join(i)
 
     while word != guess:
+        print(*guess)
         letter = input("Guess the letter: ").upper()
         if len(letter) > 1:
             print("LETTER!")
@@ -30,8 +30,6 @@ def hangman():
                     if letter not in used_letters:
                         used_letters += letter
                         attempt += 1
-                    else:
-                        print("ALREADY USED")
 
             if attempt == 0:
                 print("+---------------+")
@@ -152,12 +150,11 @@ def hangman():
                 print("|   |      / \  |")
                 print("|   A           |")
                 print("+---------------+")
-                return print("Word you were guessing was: ", "".join([name for name in word if name.isalpha]))
+                print("Word you were guessing was: ", "".join([name for name in word if name.isalpha]))
+                return print(*guess)
 
-
-        print("Already used letters: ", *used_letters)
-        print(*guess,"\n\n")
+        print("Already used letters: ", *used_letters, "\n")
 
     else:
-        return print("GOOD JOB! YOU GUESSED IT RIGHT!")
+        return print("Word you were guessing was indeed","".join([name for name in word if name.isalpha]), "\nGOOD JOB! YOU GUESSED IT RIGHT!")
 hangman()
