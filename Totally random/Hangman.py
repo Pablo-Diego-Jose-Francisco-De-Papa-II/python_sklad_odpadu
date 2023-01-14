@@ -1,6 +1,6 @@
-import random
-
 def hangman():
+    import random
+    
     guessing_word = ["Body", "soil", "owl", "fit", "cup", "helmet", "marsh", "smash", "career", "warm", "discipline", "lean", "suffering", "quality", "population", "harmony", "eagle", "feather", "origin", "manage", "reproduction", "scatter", "certain", "healthy", "dismiss", "introduce", "flock", "pasture", "office", "attractive", "cheap", "linen", "relieve", "habitat", "cassette", "difference", "strain", "lift", "operational", "gasp", "environmental", "soup", "colorblind", "chain", "feminine", "shoot", "tank", "rock", "abbey", "mosquito"]
     num = random.randint(0, len(guessing_word))
     word = list(guessing_word[num].upper())
