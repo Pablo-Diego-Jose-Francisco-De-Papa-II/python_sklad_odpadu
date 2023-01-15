@@ -1,5 +1,8 @@
 def morse_code(slovo):
+    import unicodedata
+    
     end_product = str()
+    slovo = "".join(char for char in unicodedata.normalize("NFD", slovo)if unicodedata.category(char) != "Mn")
 
     morse_dict = {"A": ".-",
                   "B": "-...",
