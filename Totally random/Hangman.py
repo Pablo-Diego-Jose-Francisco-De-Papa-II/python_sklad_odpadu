@@ -58,7 +58,7 @@ def hangman(base, pole, upper_wood, support, rope, end, head, body, left_arm, ri
                 right_leg = "\\"
                 end = "END"
 
-            print("+---------------+")
+            print("\n+---------------+")
             print("|   {}{}{}{}{}{}{}{}{}   |".format(upper_wood, upper_wood, upper_wood, upper_wood, upper_wood, upper_wood, upper_wood, upper_wood, upper_wood))
             print("|   {}{}      {}   |".format(pole, support, rope))
             print("|   {}  {}  {}   |".format(pole, end, head))
@@ -71,7 +71,7 @@ def hangman(base, pole, upper_wood, support, rope, end, head, body, left_arm, ri
                 print("Word you were guessing was: ", "".join([name for name in word if name.isalpha]))
                 return print(*guess)
 
-        print("Already used letters: ", *used_letters, "\n")
+        print("\nAlready used letters: ", *used_letters, "\n")
 
     else:
         return print("Word you were guessing was indeed","".join([name for name in word if name.isalpha]), "\nGOOD JOB! YOU GUESSED IT RIGHT!")
