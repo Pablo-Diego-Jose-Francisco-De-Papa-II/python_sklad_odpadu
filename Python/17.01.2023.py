@@ -9,21 +9,23 @@ canvas.pack()
 
 cords = []
 
-def stvrte_cvicenie_klik(x, y):
-    global line, cords
-    color = rd.choice(["blue", "red", "green", "yellow", "cyan", "pink"])
-    cords = [x, y]
-    line = canvas.create_polygon(0, 0, 0, 0, width = 4, fill = color)
+def prva_uloha():
+    def ctrl_c(x, y):
+        global line, cords
+        color = rd.choice(["blue", "red", "green", "yellow", "cyan", "pink"])
+        cords = [x, y]
+        line = canvas.create_polygon(0, 0, 0, 0, width = 4, fill = color)
 
-def stvrte_cvicenie_motion(x, y):
-    cords.extend([x, y])
-    canvas.coords(line, cords)
+    def ctrl_v(x, y):
+        cords.extend([x, y])
+        canvas.coords(line, cords)
 
-def click(mouse):
-    stvrte_cvicenie_klik(mouse.x, mouse.y)
+    def click(mouse):
+        ctrl_c(mouse.x, mouse.y)
 
-def move(mouse):
-    stvrte_cvicenie_motion(mouse.x, mouse.y)
+    def move(mouse):
+        ctrl_v(mouse.x, mouse.y)
 
-canvas.bind("<Button-1>", click)
-canvas.bind("<B1-Motion>", move)
+    canvas.bind("<Button-1>", click)
+    canvas.bind("<B1-Motion>", move)
+prva_uloha()
