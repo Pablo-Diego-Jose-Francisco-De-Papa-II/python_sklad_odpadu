@@ -1,9 +1,8 @@
-import tkinter
 import random
+import tkinter
 
 canvas=tkinter.Canvas(width = 500, height = 500, bg = "silver")
 canvas.pack()
-
 
 def prva_uloha():
     #Zadanie: kliknutin posunies obdlnik or something like that
@@ -19,7 +18,7 @@ def prva_uloha():
     canvas.bind("<Button-1>", north_west)
     canvas.bind("<Button-3>", south_east)
 
-prva_uloha()
+#prva_uloha()
 
 
 def druha_uloha(zoznam):
@@ -53,7 +52,7 @@ def druha_uloha(zoznam):
 
     canvas.bind("<Button-1>", move)
 
-druha_uloha([0, 0])
+#druha_uloha([0, 0])
 
 
 def tretia_uloha(zoznam):
@@ -66,7 +65,7 @@ def tretia_uloha(zoznam):
         canvas.coords("lajna", zoznam)
     canvas.bind("<Button-1>", click)
 
-tretia_uloha([10, 10, 60, 200])
+#tretia_uloha([10, 10, 60, 200])
 
 
 def stvrta_uloha():
@@ -77,16 +76,22 @@ def stvrta_uloha():
         canvas.create_oval(mouse.x - 10, mouse.y - 10, mouse.x + 10, mouse.y + 10, fill = "#" + str(color))
 
     canvas.bind("<B1-Motion>", ring)
-stvrta_uloha()
+#stvrta_uloha()
 
 
 def piata_uloha(zoznam):
     #Zadanie: sprav volaco
-    
-    def left(mouse):
-        zoznam.extend([mouse.x, mouse.y])
-        canvas.create_line(zoznam)
 
-    canvas.bind("<B1-Motion>", left)
+    def click(mouse):
+        global ciara
+        zoznam[:] = [mouse.x, mouse.y]
+        ciara = canvas.create_line(0, 0, 0, 0)
+
+    def motion(mouse):
+        zoznam.extend([mouse.x, mouse.y])
+        canvas.coords(ciara, zoznam)
+
+    canvas.bind("<Button-1>", click)
+    canvas.bind("<B1-Motion>", motion)
 
 piata_uloha([])
