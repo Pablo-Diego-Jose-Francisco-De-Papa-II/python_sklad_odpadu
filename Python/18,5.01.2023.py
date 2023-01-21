@@ -76,13 +76,13 @@ def druha_uloha():
     def motion(mouse):
         global red_grab, velkost, red_stvorcek, red_sur, blue_grab, blue_stvorcek, blue_sur
 
-        if red_grab is True:
+        if red_grab:
             canvas.delete(red_stvorcek)
             red_sur.extend([mouse.x - velkost, mouse.y - velkost, mouse.x + velkost, mouse.y + velkost])
             red_stvorcek = canvas.create_rectangle(red_sur[-4], red_sur[-3], red_sur[-2], red_sur[-1], fill="red", width=5)
             canvas.update()
 
-        if blue_grab is True:
+        if blue_grab:
             canvas.delete(blue_stvorcek)
             blue_sur.extend(
                 [mouse.x - velkost * 2, mouse.y - velkost * 2, mouse.x + velkost * 2, mouse.y + velkost * 2])
@@ -94,7 +94,7 @@ def druha_uloha():
 
         blue_grab = red_grab = False
 
-    canvas.bind("<Button-1>", click)
-    canvas.bind("<B1-Motion>", motion)
+    canvas.bind("<Button-1>",      click)
+    canvas.bind("<B1-Motion>",     motion)
     canvas.bind("<ButtonRelease>", unclick)
 druha_uloha()
