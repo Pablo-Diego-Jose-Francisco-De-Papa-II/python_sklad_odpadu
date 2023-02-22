@@ -42,7 +42,7 @@ def tretia_uloha():
 
 
 def stvrta_uloha():
-    #Zadanie: Nakresli picovinu cez turtle
+    #Zadanie: Uprav tretie zadanie tak, aby sa ciara nedostala prec z imaginarneho stvorca. 
 
     move = 10
     velkost = 200/2
