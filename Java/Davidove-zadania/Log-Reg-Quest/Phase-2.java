@@ -1,8 +1,10 @@
-public class simple_projects {
+public class Davitov_vadny_login_register_pindik {
 
     public static void main(String[] args) {
 
         Scanner input = new Scanner(System.in);
+        String regexPattern = "\\w+([.-]?\\w+)*@\\w+([.-]?\\w+)*(\\.\\w{2,3})+";
+        Pattern pattern = Pattern.compile(regexPattern);
         HashMap<String, String> user_data = new HashMap<String, String>();
 
 
@@ -15,7 +17,7 @@ public class simple_projects {
 
             switch (start.toLowerCase()) {
                 case "login":
-                    System.out.print("Enter your username: ");                      //input name
+                    System.out.print("Enter your email: ");                      //input name
                     String log_mail = input.next();
 
 
@@ -26,7 +28,7 @@ public class simple_projects {
                         String pass = user_data.get(log_mail);
 
                         if (pass.equals(log_pass)) {
-                            System.out.println("You successfully loged in!");
+                            System.out.println("You successfully logged in!");
                             return;
 
                         } else {
@@ -34,18 +36,25 @@ public class simple_projects {
                         }
 
                     } else {                                    //user not found
-                        System.out.println("Username not found...");                //error
+                        System.out.println("User with this email was not found...");//error
                     }
                     break;
 
 
 
                 case "register":
-                    System.out.print("Enter a new username: ");                     //input name
+                    System.out.print("Enter a new email address: ");                     //input name
                     String reg_mail = input.next();
+                    Matcher matcher = pattern.matcher(reg_mail);
+
+
+                    if (!matcher.matches()) {
+                        System.out.println("Invalid email address.");
+                        break;
+                    }
 
                     if (user_data.containsKey(reg_mail)) {
-                        System.out.println("Username already exists...");
+                        System.out.println("Email already in use...");
                         break;
                     }
 
@@ -59,8 +68,8 @@ public class simple_projects {
 
 
                 default:
-                    System.out.println("dement");                                   //error
-                
+                    System.out.println("DUMBASS");                                   //error
+
             }
         }
     }
