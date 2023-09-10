@@ -1,5 +1,7 @@
 public class Davitov_vadny_login_register_pindik {
+    
     public static void main(String[] args) {
+        
         Scanner input = new Scanner(System.in);
         ArrayList<String> names = new ArrayList<String>();
 
